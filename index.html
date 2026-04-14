@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<!-- saved from url=(0043)file:///C:/Users/menno/Downloads/index.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="en">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kessel Logistics Run [12PC]</title>
-<link rel="preconnect" href="https://fonts.googleapis.com/">
-<link href="./Kessel Logistics Run [12PC]_files/css2" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -16,10 +16,10 @@
     --gold: #c8921a;
     --gold-light: #e8ad3a;
     --gold-dim: #7a5610;
-    --text: #d4cfc4;
-    --text-muted: #7a7870;
+    --text: #b8c4cc;
+    --text-muted: #6e8494;
     --text-dim: #4a4840;
-    --border: #1e2130;
+    --border: #1c2330;
     --border-gold: #3a2a10;
     --mono: 'Space Mono', monospace;
     --display: 'Orbitron', sans-serif;
@@ -412,26 +412,27 @@
 </head>
 <body>
 
-<canvas id="stars" width="1150" height="884"></canvas>
+<canvas id="stars"></canvas>
 
 <nav>
-  <a class="nav-logo" href="file:///C:/Users/menno/Downloads/index.html#">KLR</a>
+  <a class="nav-logo" href="#" style="display:flex;align-items:center;gap:10px;"><img src="data:image/jpeg;base64,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" style="height:32px;width:32px;object-fit:cover;border-radius:50%;border:1px solid #7a5610;" alt="KLR Logo"><span>KLR</span></a>
   <div class="nav-ticker">[12PC]</div>
   <ul class="nav-links">
-    <li><a href="file:///C:/Users/menno/Downloads/index.html#about">About</a></li>
-    <li><a href="file:///C:/Users/menno/Downloads/index.html#manifest">Manifest</a></li>
-    <li><a href="file:///C:/Users/menno/Downloads/index.html#join">Recruit</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#manifest">Manifest</a></li>
+    <li><a href="#join">Recruit</a></li>
   </ul>
 </nav>
 
 <section class="hero">
-  <div class="hero-pre">EVE Online — Highsec Corporation</div>
+  <img src="data:image/jpeg;base64,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" alt="Kessel Logistics Run Logo" style="width:96px;height:96px;object-fit:cover;border-radius:50%;border:2px solid #7a5610;margin-bottom:1.5rem;box-shadow:0 0 0 4px rgba(200,146,26,0.15);">
+  <div class="hero-pre">EVE Online &mdash; Highsec Corporation</div>
   <h1 class="hero-title">Kessel<br><span>Logistics Run</span></h1>
   <p class="hero-sub">[12PC]</p>
   <p class="hero-quote">They said it couldn't be done in less than twelve parsecs. They were right. We took fourteen. There was a detour.</p>
   <div class="btn-row">
-    <a class="hero-cta" href="file:///C:/Users/menno/Downloads/index.html#join">Apply Now</a>
-    <a class="hero-cta-ghost" href="file:///C:/Users/menno/Downloads/index.html#about">Our Story</a>
+    <a class="hero-cta" href="#join">Apply Now</a>
+    <a class="hero-cta-ghost" href="#about">Our Story</a>
   </div>
   <div class="hero-scroll">SCROLL</div>
 </section>
@@ -460,8 +461,8 @@
     <p class="section-label">Who We Are</p>
     <h2 class="section-title">We Read the Lore.<br>We Took the Side Quest.</h2>
     <div class="section-body">
-      <p>Kessel Logistics Run is a highsec corporation for people who showed up to New Eden, looked at the nullsec blocs, the sov warfare, the 23-hour sieges and the 400-page coalition politics documents — and decided that wasn't why they logged in.</p>
-      <p>We're gamers. Nerds. Sci-fi fans, lore readers, bad decision makers, and occasional competent pilots. We have opinions about Star Wars — strong opinions — and one member who is wrong about Star Wars but we keep them around anyway.</p>
+      <p>Kessel Logistics Run is a highsec corporation for people who showed up to New Eden, looked at the nullsec blocs, the sov warfare, the 23-hour sieges and the 400-page coalition politics documents &mdash; and decided that wasn't why they logged in.</p>
+      <p>We're gamers. Nerds. Sci-fi fans, lore readers, bad decision makers, and occasional competent pilots. We have opinions about Star Wars &mdash; strong opinions &mdash; and one member who is wrong about Star Wars but we keep them around anyway.</p>
       <p>The fleet that forms up, warps to the wrong gate, and calls it a success. The mining op that turns into a two-hour discussion about whether Han shot first. The guy who spent three weeks theorycrafting a fit he'll never use. That's us.</p>
     </div>
 
@@ -509,7 +510,7 @@
       </div>
     </div>
     <div class="section-body">
-      <p>If you're a returning player who forgot most of the UI, a new player who has no idea what's happening, or a veteran who is tired of everything being a job — you'll fit in fine.</p>
+      <p>If you're a returning player who forgot most of the UI, a new player who has no idea what's happening, or a veteran who is tired of everything being a job &mdash; you'll fit in fine.</p>
     </div>
   </div>
 </section>
@@ -519,13 +520,13 @@
   <h2 class="section-title">Apply. Say Hi.<br>Bring Snacks.</h2>
   <p>We did the Kessel Run. Eventually. In our own time. With a stop at a trade hub and a long discussion about the Expanded Universe.</p>
   <div class="btn-row">
-    <a class="hero-cta" href="https://eveonline.com/" target="_blank">Apply In-Game</a>
-    <a class="hero-cta-ghost" href="file:///C:/Users/menno/Downloads/index.html#">Discord</a>
+    <a class="hero-cta" href="https://eveonline.com" target="_blank">Apply In-Game</a>
+    <a class="hero-cta-ghost" href="#">Discord</a>
   </div>
 </section>
 
 <footer>
-  <p><span>KESSEL LOGISTICS RUN</span> — [12PC] — New Eden, Highsec — Est. YC126</p>
+  <p><span>KESSEL LOGISTICS RUN</span> &mdash; [12PC] &mdash; New Eden, Highsec &mdash; Est. YC126</p>
   <p style="margin-top:0.5rem;">We got there.</p>
 </footer>
 
@@ -569,6 +570,5 @@ initStars();
 window.addEventListener('resize', () => { resize(); initStars(); });
 requestAnimationFrame(drawStars);
 </script>
-
-
-</body></html>
+</body>
+</html>
