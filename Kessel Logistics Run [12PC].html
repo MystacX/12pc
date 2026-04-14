@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)file:///C:/Users/menno/Downloads/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kessel Logistics Run [12PC]</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link href="./Kessel Logistics Run [12PC]_files/css2" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #08090d;
+    --bg2: #0e1018;
+    --bg3: #131520;
+    --gold: #c8921a;
+    --gold-light: #e8ad3a;
+    --gold-dim: #7a5610;
+    --text: #d4cfc4;
+    --text-muted: #7a7870;
+    --text-dim: #4a4840;
+    --border: #1e2130;
+    --border-gold: #3a2a10;
+    --mono: 'Space Mono', monospace;
+    --display: 'Orbitron', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 14px;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* STARFIELD */
+  #stars {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--border);
+    background: rgba(8,9,13,0.92);
+    backdrop-filter: blur(8px);
+  }
+
+  .nav-logo {
+    font-family: var(--display);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    text-decoration: none;
+  }
+
+  .nav-ticker {
+    font-family: var(--display);
+    font-size: 10px;
+    color: var(--text-muted);
+    border: 1px solid var(--gold-dim);
+    padding: 2px 8px;
+    letter-spacing: 0.2em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold-light); }
+
+  /* SECTIONS */
+  section { position: relative; z-index: 1; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8rem 2rem 4rem;
+  }
+
+  .hero-pre {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--gold-dim);
+    padding: 4px 16px;
+    display: inline-block;
+  }
+
+  .hero-title {
+    font-family: var(--display);
+    font-size: clamp(2rem, 6vw, 4.5rem);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.1;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-title span { color: var(--gold); }
+
+  .hero-sub {
+    font-family: var(--display);
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-weight: 400;
+    color: var(--text-muted);
+    letter-spacing: 0.2em;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-quote {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-style: italic;
+    max-width: 480px;
+    margin: 0 auto 3rem;
+    line-height: 2;
+  }
+
+  .hero-quote::before { content: '// '; color: var(--gold-dim); }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--gold);
+    color: #08090d;
+    font-family: var(--display);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    padding: 0.9rem 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background 0.2s, transform 0.1s;
+  }
+
+  .hero-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .hero-cta-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    border: 1px solid var(--gold-dim);
+    color: var(--gold);
+    font-family: var(--display);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    padding: 0.9rem 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: border-color 0.2s, color 0.2s;
+    margin-left: 1rem;
+  }
+
+  .hero-cta-ghost:hover { border-color: var(--gold); color: var(--gold-light); }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--text-dim);
+    text-align: center;
+  }
+
+  .hero-scroll::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 40px;
+    background: var(--text-dim);
+    margin: 0.5rem auto 0;
+    animation: scrollpulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollpulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  /* DIVIDER */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0;
+  }
+
+  /* STAT BAR */
+  .statbar {
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    padding: 1.25rem 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: var(--display);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  /* CONTENT SECTIONS */
+  .content-section {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-label::before { content: '> '; }
+
+  .section-title {
+    font-family: var(--display);
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.05em;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+  }
+
+  .section-body {
+    color: var(--text);
+    font-size: 14px;
+    line-height: 2;
+    max-width: 680px;
+  }
+
+  .section-body p + p { margin-top: 1.25rem; }
+
+  /* TERMINAL BLOCK */
+  .terminal {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold-dim);
+    padding: 1.5rem 2rem;
+    margin: 2.5rem 0;
+    font-size: 13px;
+    line-height: 2;
+  }
+
+  .terminal .prompt { color: var(--gold-dim); }
+  .terminal .cmd { color: var(--gold-light); }
+  .terminal .out { color: var(--text-muted); }
+  .terminal .out-good { color: #5ca87a; }
+  .terminal .out-bad { color: #8a3030; }
+
+  /* TWO COLUMN */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+  }
+
+  @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
+
+  .col-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+  }
+
+  .col-card h3 {
+    font-family: var(--display);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  .col-card ul {
+    list-style: none;
+    color: var(--text);
+    font-size: 13px;
+    line-height: 2;
+  }
+
+  .col-card ul li::before { content: '+ '; color: var(--gold-dim); }
+  .col-card.neg ul li::before { content: '- '; color: #6a2020; }
+
+  /* RECRUIT STRIP */
+  .recruit-strip {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+
+  .recruit-strip .section-title { margin-bottom: 1rem; }
+
+  .recruit-strip p {
+    color: var(--text-muted);
+    font-size: 13px;
+    max-width: 520px;
+    margin: 0 auto 2.5rem;
+    line-height: 2;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem;
+    text-align: center;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    border-top: 1px solid var(--border);
+  }
+
+  footer span { color: var(--gold-dim); }
+
+  /* SCANLINE OVERLAY */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.03) 2px,
+      rgba(0,0,0,0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 200;
+  }
+
+  /* PARSE HIGHLIGHT */
+  .gold { color: var(--gold); }
+  .muted { color: var(--text-muted); }
+
+  /* ANIMATE IN */
+  @keyframes fadein {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero > * {
+    animation: fadein 0.6s ease both;
+  }
+  .hero > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero > *:nth-child(3) { animation-delay: 0.3s; }
+  .hero > *:nth-child(4) { animation-delay: 0.4s; }
+  .hero > *:nth-child(5) { animation-delay: 0.5s; }
+  .hero > *:nth-child(6) { animation-delay: 0.6s; }
+
+  .btn-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+</style>
+</head>
+<body>
+
+<canvas id="stars" width="1150" height="884"></canvas>
+
+<nav>
+  <a class="nav-logo" href="file:///C:/Users/menno/Downloads/index.html#">KLR</a>
+  <div class="nav-ticker">[12PC]</div>
+  <ul class="nav-links">
+    <li><a href="file:///C:/Users/menno/Downloads/index.html#about">About</a></li>
+    <li><a href="file:///C:/Users/menno/Downloads/index.html#manifest">Manifest</a></li>
+    <li><a href="file:///C:/Users/menno/Downloads/index.html#join">Recruit</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-pre">EVE Online — Highsec Corporation</div>
+  <h1 class="hero-title">Kessel<br><span>Logistics Run</span></h1>
+  <p class="hero-sub">[12PC]</p>
+  <p class="hero-quote">They said it couldn't be done in less than twelve parsecs. They were right. We took fourteen. There was a detour.</p>
+  <div class="btn-row">
+    <a class="hero-cta" href="file:///C:/Users/menno/Downloads/index.html#join">Apply Now</a>
+    <a class="hero-cta-ghost" href="file:///C:/Users/menno/Downloads/index.html#about">Our Story</a>
+  </div>
+  <div class="hero-scroll">SCROLL</div>
+</section>
+
+<div class="statbar">
+  <div class="stat">
+    <span class="stat-num">HIGHSEC</span>
+    <span class="stat-label">Operating Space</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">0</span>
+    <span class="stat-label">Mandatory Ops</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">100%</span>
+    <span class="stat-label">Nerd Density</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">14 PC</span>
+    <span class="stat-label">Actual Parsecs</span>
+  </div>
+</div>
+
+<section id="about">
+  <div class="content-section">
+    <p class="section-label">Who We Are</p>
+    <h2 class="section-title">We Read the Lore.<br>We Took the Side Quest.</h2>
+    <div class="section-body">
+      <p>Kessel Logistics Run is a highsec corporation for people who showed up to New Eden, looked at the nullsec blocs, the sov warfare, the 23-hour sieges and the 400-page coalition politics documents — and decided that wasn't why they logged in.</p>
+      <p>We're gamers. Nerds. Sci-fi fans, lore readers, bad decision makers, and occasional competent pilots. We have opinions about Star Wars — strong opinions — and one member who is wrong about Star Wars but we keep them around anyway.</p>
+      <p>The fleet that forms up, warps to the wrong gate, and calls it a success. The mining op that turns into a two-hour discussion about whether Han shot first. The guy who spent three weeks theorycrafting a fit he'll never use. That's us.</p>
+    </div>
+
+    <div class="terminal">
+      <div><span class="prompt">klr@new-eden:~$ </span><span class="cmd">corp status --verbose</span></div>
+      <div><span class="out">sov_warfare ............. </span><span class="out-bad">DECLINED</span></div>
+      <div><span class="out">mandatory_fleets ........ </span><span class="out-bad">NONE</span></div>
+      <div><span class="out">drama_level ............. </span><span class="out-good">NOMINAL</span></div>
+      <div><span class="out">lore_knowledge .......... </span><span class="out-good">EXCESSIVE</span></div>
+      <div><span class="out">han_shot_first .......... </span><span class="out-good">TRUE</span></div>
+      <div><span class="out">parsecs_taken ........... </span><span class="out-good">14 (detour noted)</span></div>
+      <div><span class="prompt">klr@new-eden:~$ </span><span class="cmd">_</span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="manifest">
+  <div class="content-section">
+    <p class="section-label">Manifest</p>
+    <h2 class="section-title">What We Do.<br>What We Don't.</h2>
+    <div class="two-col">
+      <div class="col-card">
+        <h3>We Do</h3>
+        <ul>
+          <li>Missions (the storyline agents deserve an audience)</li>
+          <li>Mining, socially, with music and bad takes</li>
+          <li>Exploration, when we remember it exists</li>
+          <li>Industry, slowly, with spreadsheets (yes there are spreadsheets)</li>
+          <li>Whatever looked interesting on the map tonight</li>
+          <li>Very long discussions about sci-fi canon</li>
+        </ul>
+      </div>
+      <div class="col-card neg">
+        <h3>We Don't</h3>
+        <ul>
+          <li>Mandatory ops</li>
+          <li>CTAs at 3am</li>
+          <li>Drama</li>
+          <li>Nullsec (we've seen the forums)</li>
+          <li>Gatekeeping your playstyle</li>
+          <li>Taking this too seriously</li>
+        </ul>
+      </div>
+    </div>
+    <div class="section-body">
+      <p>If you're a returning player who forgot most of the UI, a new player who has no idea what's happening, or a veteran who is tired of everything being a job — you'll fit in fine.</p>
+    </div>
+  </div>
+</section>
+
+<section class="recruit-strip" id="join">
+  <p class="section-label" style="text-align:center; margin-bottom:0.75rem;">Recruitment</p>
+  <h2 class="section-title">Apply. Say Hi.<br>Bring Snacks.</h2>
+  <p>We did the Kessel Run. Eventually. In our own time. With a stop at a trade hub and a long discussion about the Expanded Universe.</p>
+  <div class="btn-row">
+    <a class="hero-cta" href="https://eveonline.com/" target="_blank">Apply In-Game</a>
+    <a class="hero-cta-ghost" href="file:///C:/Users/menno/Downloads/index.html#">Discord</a>
+  </div>
+</section>
+
+<footer>
+  <p><span>KESSEL LOGISTICS RUN</span> — [12PC] — New Eden, Highsec — Est. YC126</p>
+  <p style="margin-top:0.5rem;">We got there.</p>
+</footer>
+
+<script>
+const canvas = document.getElementById('stars');
+const ctx = canvas.getContext('2d');
+let stars = [];
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+function initStars() {
+  stars = [];
+  for (let i = 0; i < 220; i++) {
+    stars.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.2,
+      a: Math.random(),
+      speed: 0.0003 + Math.random() * 0.0006
+    });
+  }
+}
+
+function drawStars(t) {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (const s of stars) {
+    const alpha = 0.3 + 0.5 * Math.abs(Math.sin(t * s.speed + s.a * 100));
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(200, 195, 180, ${alpha})`;
+    ctx.fill();
+  }
+  requestAnimationFrame(drawStars);
+}
+
+resize();
+initStars();
+window.addEventListener('resize', () => { resize(); initStars(); });
+requestAnimationFrame(drawStars);
+</script>
+
+
+</body></html>
